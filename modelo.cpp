@@ -1,10 +1,18 @@
 #include "modelo.h"
 
-const float Modelo::maxNota = 100.0;
-
 Modelo::Modelo()
 {
 
+}
+
+const QString &Modelo::SKU() const
+{
+    return m_SKU;
+}
+
+void Modelo::setSKU(const QString &newSKU)
+{
+    m_SKU = newSKU;
 }
 
 const QString &Modelo::nombre() const
@@ -17,45 +25,33 @@ void Modelo::setNombre(const QString &newNombre)
     m_nombre = newNombre;
 }
 
-const QString &Modelo::apellido() const
+float Modelo::precioCompra() const
 {
-    return m_apellido;
+    return m_precioCompra;
 }
 
-void Modelo::setApellido(const QString &newApellido)
+void Modelo::setPrecioCompra(float newPrecioCompra)
 {
-    m_apellido = newApellido;
+    m_precioCompra = newPrecioCompra;
 }
 
-float Modelo::nota1() const
+int Modelo::existencias() const
 {
-    return m_nota1;
+    return m_existencias;
 }
 
-void Modelo::setNota1(float newNota1)
+void Modelo::setExistencias(int newExistencias)
 {
-    m_nota1 = newNota1;
+    m_existencias = newExistencias;
 }
 
-float Modelo::nota2() const
+QString Modelo::toString()
 {
-    return m_nota2;
+    return (m_SKU + " | " + m_nombre + " | " + QString::number(m_precioCompra, 'f', 2) + " | " + QString::number(m_existencias));
 }
 
-void Modelo::setNota2(float newNota2)
-{
-    m_nota2 = newNota2;
-}
-
-QString Modelo::to_string()
-{
-    QString str;
-    str = nombre() + apellido() + QString::number(m_nota1) + QString::number(m_nota2);
-    return str;
-}
-
-Modelo::Modelo(const QString &nombre, const QString &apellido, float nota1, float nota2) : m_nombre(nombre),
-    m_apellido(apellido),
-    m_nota1(nota1),
-    m_nota2(nota2)
+Modelo::Modelo(const QString &SKU, const QString &nombre, float precioCompra, float existencias) : m_SKU(SKU),
+    m_nombre(nombre),
+    m_precioCompra(precioCompra),
+    m_existencias(existencias)
 {}

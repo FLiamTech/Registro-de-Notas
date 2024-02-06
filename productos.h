@@ -1,14 +1,16 @@
-#ifndef MODELO_H
-#define MODELO_H
+#ifndef PRODUCTOS_H
+#define PRODUCTOS_H
 
 #include <QString>
 
 
-class Modelo
+class Productos
 {
 public:
-    Modelo();
-    Modelo(const QString &SKU, const QString &nombre, float precioCompra, float existencias);
+    Productos();
+    Productos(const QString &SKU, const QString &nombre, float precioCompra, int existencias);
+
+    QString toString();
 
     const QString &SKU() const;
     void setSKU(const QString &newSKU);
@@ -19,8 +21,6 @@ public:
     int existencias() const;
     void setExistencias(int newExistencias);
 
-    QString toString();
-
 private:
     QString m_SKU;
     QString m_nombre;
@@ -28,4 +28,4 @@ private:
     int m_existencias;
 };
 
-#endif // MODELO_H
+#endif // PRODUCTOS_H

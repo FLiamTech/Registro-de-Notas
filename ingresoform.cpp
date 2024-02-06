@@ -12,3 +12,17 @@ IngresoForm::~IngresoForm()
 {
     delete ui;
 }
+
+void IngresoForm::setProductos(QList<Productos *> &newProducto)
+{
+    m_productos = newProducto;
+}
+
+void IngresoForm::cargarAsignaturas()
+{
+    ui->cmbProductos->clear();
+    foreach(Productos *p, m_productos)
+    {
+        ui->cmbProductos->addItem(p->nombre());
+    }
+}
